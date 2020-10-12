@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "carMake": "Chevrolet",
+        "carModel": "Camaro"
+    },
+    {
+        "id": 2,
+        "carMake": "Chevrolet",
+        "carModel": "Corvette"
+    },
+    {
+        "id": "3",
+        "carMake": "Dodge",
+        "carModel": "Challenger"
+    },
+    {
+        "id": "4",
+        "carMake": "Dodge",
+        "carModel": "Charger"
+    },
+    {
+        "id": "5",
+        "carMake": "Dodge",
+        "carModel": "Viper"
+    },
+    {
+        "id": 6,
+        "carMake": "Ford",
+        "carModel": "GT"
+    },
+    {
+        "id": 7,
+        "carMake": "Ford",
+        "carModel": "Mustang"
+    }
+  ]

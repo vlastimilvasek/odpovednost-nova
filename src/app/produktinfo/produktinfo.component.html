@@ -1,0 +1,78 @@
+		<div *ngIf="data.pojisteni == 'ZAMODP'" class="card">
+			<div class="row align-items-center card-body">
+				<div class="{{ layout.grid.info1 }}">
+					<img src="{{ LOGA[r.pojistovna] }}" class="mx-auto d-block" style="max-height:50px;" alt="{{ r.pojistovna }}" />
+				</div>
+				<div class="{{ layout.grid.info2 }}">
+					<h5 class="card-title">{{ r.produkt }}</h5>
+					<div class="card-text">
+						<div class="clearfix">{{ r.params.pc.popis }}<span style="float:right" [innerHTML]="r.params.pc.hodnota | menaFormat"></span></div>
+                        <div class="clearfix">{{ r.params.spol.popis }}<span style="float:right" [innerHTML]="r.params.spol.hodnota | spolFormat"></span></div>
+                        <div class="clearfix">{{ r.params.uzpl.popis }}<span style="float:right" [innerHTML]="r.params.uzpl.hodnota"></span></div>
+						<div class="clearfix">{{ r.params.r_voz.popis }}<span style="float:right" [innerHTML]="r.params.r_voz.hodnota | menaFormatInfo"></span></div>
+                        <div class="clearfix">{{ r.params.r_sou.popis }}<span style="float:right" [innerHTML]="r.params.r_sou.hodnota | menaFormatInfo"></span></div>
+                        <div class="clearfix">{{ r.params.r_nakl.popis }}<span style="float:right" [innerHTML]="r.params.r_nakl.hodnota | menaFormatInfo"></span></div>
+                        <div class="clearfix">{{ r.params.r_str.popis }}<span style="float:right" [innerHTML]="r.params.r_str.hodnota | menaFormatInfo"></span></div>
+                    </div>
+                    <h5 *ngIf="r.pplatby.length" class="vagl mt-4">{{ 'SROVNANI.PLATBY' | translate }}</h5>                    
+					<div *ngIf="r.pplatby.length">
+						<span *ngFor="let pl of r.pplatby" class="" >
+							<button *ngIf="pl.value" class="btn btn-sm mt-1 mr-1" type="button"
+								[class.btn-primary]="data.platba === pl.key" [class.btn-outline-primary]="data.platba !== pl.key"
+								(click)="data.platba = pl.key">
+								{{ pl.key }} x <strong><span [outerHTML]="pl.value | telefonFormat"></span>&nbsp;{{ 'FORM.KC' | translate }}</strong>
+							</button>
+						</span>
+                    </div>
+                    <div *ngIf="show_doc === true">
+                        <h5 *ngIf="r.dokumenty.length" class="vagl mt-4">{{ 'SROVNANI.DOKUMENTY' | translate }}</h5>
+                        <ul *ngIf="r.dokumenty.length" class="fa-ul">
+                            <li *ngFor="let dok of r.dokumenty">
+                                <a class="" href="{{ dok.url }}" target="_pdf_dok"><span class="fa-li" ><i class="text-danger far fa-file-pdf"></i></span> {{ dok.nazev }}</a>
+                            </li>
+                        </ul>
+                    </div>					
+				</div>
+			</div>
+        </div>
+
+		<div *ngIf="data.pojisteni == 'OBODP'" class="card">
+			<div class="row align-items-center card-body">
+				<div class="{{ layout.grid.info1 }}">
+					<img src="{{ LOGA[r.pojistovna] }}" class="mx-auto d-block" style="max-height:50px;" alt="{{ r.pojistovna }}" />
+				</div>
+				<div class="{{ layout.grid.info2 }}">
+					<div class="card-text">
+						<div class="clearfix">{{ r.params.boz.popis }}<span style="float:right" [innerHTML]="r.params.boz.hodnota | menaFormat"></span></div>
+                        <div class="clearfix">{{ r.params.dom.popis }}<span style="float:right" [innerHTML]="r.params.dom.hodnota | menaFormat"></span></div>
+						<div class="clearfix">{{ r.params.rsp.popis }}<span style="float:right" [innerHTML]="r.params.rsp.hodnota | menaFormat"></span></div>
+                        <div class="clearfix">{{ r.params.zdr.popis }}<span style="float:right" [innerHTML]="r.params.zdr.hodnota | menaFormat"></span></div>
+                        <div class="clearfix">{{ r.params.pel.popis }}<span style="float:right" [innerHTML]="r.params.pel.hodnota | menaFormat"></span></div>
+                        <div class="clearfix">{{ r.params.dzv.popis }}<span style="float:right" [innerHTML]="r.params.dzv.hodnota | menaFormat"></span></div>
+                        <div class="clearfix">{{ r.params.hzv.popis }}<span style="float:right" [innerHTML]="r.params.hzv.hodnota | menaFormat"></span></div>
+                        <div class="clearfix">{{ r.params.nem.popis }}<span style="float:right" [innerHTML]="r.params.nem.hodnota | menaFormat"></span></div>
+                        <div class="clearfix">{{ r.params.pro.popis }}<span style="float:right" [innerHTML]="r.params.pro.hodnota | menaFormat"></span></div>
+						<div class="clearfix">{{ r.params.spol.popis }}<span style="float:right" [innerHTML]="r.params.spol.hodnota | spolFormat"></span></div>
+						<!-- <div class="clearfix">{{ r.params.uzpl.popis }}:<span class="ml-4" [innerHTML]="r.params.uzpl.hodnota"></span></div> -->                                                
+                    </div>
+                    <h5 *ngIf="r.pplatby.length" class="vagl mt-4">{{ 'SROVNANI.PLATBY' | translate }}</h5>
+					<div *ngIf="r.pplatby.length" class="">
+						<span *ngFor="let pl of r.pplatby" class="" >
+							<button *ngIf="pl.value" class="btn btn-sm mt-1 mr-1" type="button"
+								[class.btn-primary]="data.platba === pl.key" [class.btn-outline-primary]="data.platba !== pl.key"
+								(click)="data.platba = pl.key">
+								{{ pl.key }} x <strong><span [outerHTML]="pl.value | telefonFormat"></span>&nbsp;{{ 'FORM.KC' | translate }}</strong>
+							</button>
+						</span>
+                    </div>
+                    <div *ngIf="show_doc === true">
+                        <h5 *ngIf="r.dokumenty.length" class="vagl mt-4">{{ 'SROVNANI.DOKUMENTY' | translate }}</h5>
+                        <ul *ngIf="r.dokumenty.length" class="fa-ul">
+                            <li *ngFor="let dok of r.dokumenty">
+                                <a class="" href="{{ dok.url }}" target="_pdf_dok"><span class="fa-li" ><i class="text-danger far fa-file-pdf"></i></span> {{ dok.nazev }}</a>
+                            </li>
+                        </ul>
+                    </div>                    					
+				</div>
+			</div>
+		</div>        
